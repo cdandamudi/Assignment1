@@ -4,5 +4,7 @@ FROM python:3.8-slim
 WORKDIR /usr/src/app
 # Copy
 COPY sparse_recommender.py .
+
+RUN pip install numpy
 # run
 CMD [ "python", "./sparse_recommender.py" ]
