@@ -7,9 +7,11 @@ jobs:
 
     steps:
       - checkout
+      - setup_remote_docker:
+          version: 19.03.13
       - run:
           name: Install Dependencies
-          command: pip install pytest && pip install numpy && sudo service docker start
+          command: pip install pytest && pip install numpy
           # working_directory: Front-end/expense-management-frontend
       - run:
           name: Run Tests
