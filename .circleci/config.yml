@@ -2,9 +2,8 @@ version: 2.1
 
 jobs:
   setup-and-test:
-    build:
-      docker:
-        - image: circleci/python:3.8  # Use the base image that suits your project
+    docker:
+     - image: circleci/python:3.8  # Use the base image that suits your project
 
     # machine:
     #   image: ubuntu-2204:2022.07.1
