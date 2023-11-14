@@ -1,16 +1,26 @@
 version: 2.1
 
 jobs:
-  hello-job:
-    machine:
-      image: ubuntu-2204:2022.07.1
+  setup-and-test:
+  build:
+    docker:
+      - image: circleci/python:3.8  # Use the base image that suits your project
+
+    # machine:
+    #   image: ubuntu-2204:2022.07.1
 
     steps:
-      # Commands are run in a Windows virtual machine environment
       - checkout
-      - run: echo "Hello, World!"
+      - run:
+          name: Install Dependencies
+          command: pip install pytest
+          # working_directory: Front-end/expense-management-frontend
+      - run:
+          name: Run Tests
+          command: pytest test_sparse_recommender.py
+          # working_directory: Front-end/expense-management-frontend
 
 workflows:
-  my-workflow:
+  Setup_and_Test:
     jobs:
-      - hello-job
+      - setup-and-test
