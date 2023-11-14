@@ -26,8 +26,9 @@ jobs:
       - run:
           name: Push Docker Image to Docker Hub
           command: |
-            echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-            docker push $DOCKERHUB_USERNAME/movierecommender
+            echo "$DOCKER_Password" | docker login -u "$DOCKER_USERNAME" --password-stdin
+            docker push "$DOCKERHUB_USERNAME/movierecommender"
+
 
 workflows:
   setup-and-test-and-push:
