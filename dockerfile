@@ -1,14 +1,9 @@
 # Use the official Python image from Docker Hub as the base image
 FROM python:3.8-slim
-
 # Set working directory
 WORKDIR /usr/src/app
-
-# Copy the Python script to the working directory
+# Copy
 COPY sparse_recommender.py .
 
-# Upgrade pip and install numpy
-RUN pip install --upgrade pip && pip install --no-cache-dir numpy
-
-# Run the Python script
+# run
 CMD [ "python", "./sparse_recommender.py" ]
