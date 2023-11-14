@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  setup-and-test:
+  setup-and-test-and-push:
     docker:
      - image: circleci/python:3.8  # Use the base image that suits your project
 
@@ -18,8 +18,18 @@ jobs:
           name: Run Tests
           command: pytest test_sparse_recommender.py
           # working_directory: Front-end/expense-management-frontend
+      - run:
+          name: Build Docker Image
+          command: |
+            docker build -t $DOCKERHUB_USERNAME/movierecommender:${CIRCLE_SHA1} .
 
+      # Push Docker image to Docker Hub
+      - run:
+          name: Push Docker Image to Docker Hub
+          command: |
+            echo "$DOCKER_Password" | docker login -u "$DOCKER_USERNAME" --password-stdin
+            docker push $DOCKERHUB_USERNAME/movierecommender:${CIRCLE_SHA1}
 workflows:
-  Setup_and_Test:
+  Setup_and_Test_and_Push:
     jobs:
-      - setup-and-test
+      - setup-and-test-and-push
