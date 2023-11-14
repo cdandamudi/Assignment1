@@ -12,7 +12,7 @@ jobs:
       - checkout
       - run:
           name: Install Dependencies
-          command: pip install pytest
+          command: pip install pytest && pip install numpy
           # working_directory: Front-end/expense-management-frontend
       - run:
           name: Run Tests
