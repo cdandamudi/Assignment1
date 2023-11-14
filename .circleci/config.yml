@@ -1,0 +1,16 @@
+version: 2.1
+
+jobs:
+  hello-job:
+    machine:
+      image: ubuntu-2204:2022.07.1
+
+    steps:
+      # Commands are run in a Windows virtual machine environment
+      - checkout
+      - run: echo "Hello, World!"
+
+workflows:
+  my-workflow:
+    jobs:
+      - hello-job
