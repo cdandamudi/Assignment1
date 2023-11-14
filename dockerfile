@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 COPY sparse_recommender.py .
 
 # Upgrade pip and install numpy
-RUN pip install --upgrade pip && pip install numpy
+RUN pip install --upgrade pip && pip install --no-cache-dir numpy
 
 # Run the Python script
 CMD [ "python", "./sparse_recommender.py" ]
